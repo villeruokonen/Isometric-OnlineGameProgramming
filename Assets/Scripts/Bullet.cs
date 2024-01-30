@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Bullet : NetworkBehaviour
 {
+    [SerializeField] private float _bulletSpeed = 10f;
     void Start()
     {
         
@@ -20,13 +21,7 @@ public class Bullet : NetworkBehaviour
 
     void Move()
     {
-        transform.position += transform.forward * 0.1f;
+        transform.position += transform.forward * _bulletSpeed*0.01f;
 
-    }
-
-    public void SetDirection(Vector3 direction)
-    {
-        transform.forward = direction;
-        Debug.Log("Bullet direction set to " + direction);
     }
 }
