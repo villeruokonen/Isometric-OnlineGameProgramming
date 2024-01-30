@@ -8,6 +8,7 @@ public class Shoot : NetworkBehaviour
     [SerializeField]
     private GameObject _bulletPrefab;
     private Transform _playerModel;
+    private Transform _shootingPoint;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +17,7 @@ public class Shoot : NetworkBehaviour
             return;
 
         _playerModel = transform.GetChild(0);
+        _shootingPoint = transform.GetChild(0).GetChild(0);
     }
 
     // Update is called once per frame
@@ -25,18 +27,21 @@ public class Shoot : NetworkBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                ShootServerRpc();
+                ShootServerRpc(_shootingPoint.position,_playerModel.rotation);
             }
         }
     }
 
     [ServerRpc]
-    private void ShootServerRpc()
+    private void ShootServerRpc(Vector3 position, Quaternion rotation)
     {
         // Make a bullet
-        var bullet = Instantiate(_bulletPrefab, _playerModel.position, _playerModel.rotation);
+        var bullet = Instantiate(_bulletPrefab, position, rotation);
         var netObj = bullet.GetComponent<NetworkObject>();
         netObj.Spawn();
     }
 
+   
+        
+    
 }

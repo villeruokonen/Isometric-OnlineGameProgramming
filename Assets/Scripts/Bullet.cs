@@ -11,7 +11,6 @@ public class Bullet : NetworkBehaviour
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(!IsServer)
@@ -24,4 +23,18 @@ public class Bullet : NetworkBehaviour
         transform.position += transform.forward * _bulletSpeed*0.01f;
 
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(!IsServer)
+            return;
+        if (other.gameObject.CompareTag("Player"))
+        {
+            var player = other.gameObject.GetComponent<Player>();
+            player.DieServerRpc();
+            Destroy(gameObject);
+        }
+        Destroy(gameObject);
+    }
+    
 }
