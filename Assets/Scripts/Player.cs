@@ -73,4 +73,10 @@ public class Player : NetworkBehaviour
         var netObj = bomb.GetComponent<NetworkObject>();
         netObj.Spawn();
     }
+
+    [ServerRpc(RequireOwnership =false)]
+    public void DieServerRpc()
+    {
+        gameObject.SetActive(false);
+    }
 }
