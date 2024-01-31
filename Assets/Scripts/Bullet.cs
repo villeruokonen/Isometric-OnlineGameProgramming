@@ -13,8 +13,7 @@ public class Bullet : NetworkBehaviour
 
     void Update()
     {
-        if(!IsServer)
-            return;
+       
         Move();
     }
 
@@ -26,8 +25,6 @@ public class Bullet : NetworkBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(!IsServer)
-            return;
         if (other.gameObject.CompareTag("Player"))
         {
             var player = other.gameObject.GetComponent<Player>();

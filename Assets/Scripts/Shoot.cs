@@ -28,6 +28,7 @@ public class Shoot : NetworkBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 ShootServerRpc(_shootingPoint.position,_playerModel.rotation);
+
             }
         }
     }
@@ -35,13 +36,15 @@ public class Shoot : NetworkBehaviour
     [ServerRpc]
     private void ShootServerRpc(Vector3 position, Quaternion rotation)
     {
-        // Make a bullet
-        var bullet = Instantiate(_bulletPrefab, position, rotation);
-        var netObj = bullet.GetComponent<NetworkObject>();
-        netObj.Spawn();
+        // Instantiate the bullet on the server
+
+        ShootClientRpc(position,rotation);
     }
 
-   
-        
-    
+    [ClientRpc]
+    private void ShootClientRpc(Vector3 bulletPosition, Quaternion bulletRotation)
+    {
+        var bullet = Instantiate(_bulletPrefab, bulletPosition, bulletRotation);
+    }
+
 }
