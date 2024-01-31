@@ -16,4 +16,10 @@ public class Player : NetworkBehaviour
     {
         
     }
+
+    [ServerRpc(RequireOwnership =false)]
+    public void DieServerRpc()
+    {
+        Destroy(gameObject);
+    }
 }
