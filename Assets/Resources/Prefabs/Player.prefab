@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5511004797867769065}
   - component: {fileID: 8869752167029108588}
   - component: {fileID: 992884989870218246}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2089133851091060359}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -195,7 +195,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8ec4de5a6840cdf44949fb04effd028c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.00026
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8ec4de5a6840cdf44949fb04effd028c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -232,6 +232,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8ec4de5a6840cdf44949fb04effd028c, type: 3}
       propertyPath: m_Name
       value: Slime
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8ec4de5a6840cdf44949fb04effd028c, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

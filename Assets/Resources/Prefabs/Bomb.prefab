@@ -120,9 +120,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e97759f8be416ea45b92508775a2546f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _timeToExplode: 3
   _bombMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 63
 --- !u!114 &6448461377368142730
 MonoBehaviour:
   m_ObjectHideFlags: 0
