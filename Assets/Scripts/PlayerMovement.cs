@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -16,16 +17,31 @@ public class PlayerMovement : MonoBehaviour
 
     private Transform _modelTransform;
 
+    private bool _canRun = false;
+
+    private Player _owner;
+
     // Start is called before the first frame update
     void Start()
     {
+        _owner = GetComponent<Player>();
+        if(_owner == null || !_owner.IsLocalPlayer)
+        {
+            return;
+        }
+
         _cc = GetComponent<CharacterController>();
         _modelTransform = transform.Find("Model");
+
+        _canRun = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!_canRun)
+            return;
+
         CheckInput();
         Move();
         RotateModel();
