@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 
-public class Bullet : NetworkBehaviour
+public class Bullet : MonoBehaviour
 {
     [SerializeField] private float _bulletSpeed = 10f;
     void Start()
@@ -19,8 +19,7 @@ public class Bullet : NetworkBehaviour
 
     void Move()
     {
-        transform.position += transform.forward * _bulletSpeed*0.01f;
-
+        transform.position += transform.forward * _bulletSpeed * Time.deltaTime;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -30,6 +29,11 @@ public class Bullet : NetworkBehaviour
             var player = other.gameObject.GetComponent<Player>();
             player.DieServerRpc();
             Destroy(gameObject);
+        }
+
+        if (other.gameObject.CompareTag("Bullet"))
+        {
+            return;
         }
         Destroy(gameObject);
     }

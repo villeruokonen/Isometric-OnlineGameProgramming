@@ -16,8 +16,8 @@ public class Shoot : NetworkBehaviour
         if (!IsLocalPlayer)
             return;
 
-        _playerModel = transform.GetChild(0);
-        _shootingPoint = transform.GetChild(0).GetChild(0);
+        _playerModel = transform.Find("Model");
+        _shootingPoint = _playerModel.Find("ShootingPoint");
     }
 
     // Update is called once per frame
@@ -28,7 +28,7 @@ public class Shoot : NetworkBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 ShootServerRpc(_shootingPoint.position,_playerModel.rotation);
-
+                //Debug.Log("Clicked");
             }
         }
     }
@@ -39,12 +39,16 @@ public class Shoot : NetworkBehaviour
         // Instantiate the bullet on the server
 
         ShootClientRpc(position,rotation);
+
+        Debug.Log("ShootServerRpc called");
     }
 
     [ClientRpc]
     private void ShootClientRpc(Vector3 bulletPosition, Quaternion bulletRotation)
     {
         var bullet = Instantiate(_bulletPrefab, bulletPosition, bulletRotation);
+
+        Debug.Log("ShootClientRpc called");
     }
 
 }
