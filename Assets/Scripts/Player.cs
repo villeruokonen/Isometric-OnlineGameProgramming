@@ -6,7 +6,13 @@ using System.Linq;
 
 public class Player : NetworkBehaviour
 {
-    // Update is called once per frame
+    private void Start()
+    {
+        if(IsLocalPlayer)
+        {
+            transform.position=new Vector3(7,0,-1);
+        }
+    }
     void Update()
     {
         if (!IsLocalPlayer)
