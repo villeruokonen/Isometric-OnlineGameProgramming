@@ -1,36 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4500139956916993584
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5196709027492505613}
-  m_Layer: 0
-  m_Name: ShootingPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5196709027492505613
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4500139956916993584}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.0031512748, z: 0.010599754}
-  m_LocalScale: {x: 0.016851753, y: 0.016851755, z: 0.016851755}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2089133851091060359}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9128370967960184776
 GameObject:
   m_ObjectHideFlags: 0
@@ -45,10 +14,10 @@ GameObject:
   - component: {fileID: 5511004797867769065}
   - component: {fileID: 8869752167029108588}
   - component: {fileID: 992884989870218246}
-  - component: {fileID: -4896420352767247052}
-  m_Layer: 0
+  - component: {fileID: 8096205766858220189}
+  m_Layer: 3
   m_Name: Player
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -88,13 +57,13 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 1.52
-  m_Radius: 0.6
+  m_Height: 0.78
+  m_Radius: 0.45
   m_SlopeLimit: 45
   m_StepOffset: 0
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: -0.23, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1847845507174858932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,7 +138,7 @@ MonoBehaviour:
   InLocalSpace: 0
   Interpolate: 1
   SlerpPosition: 1
---- !u!114 &-4896420352767247052
+--- !u!114 &8096205766858220189
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -191,7 +160,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2089133851091060359}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,11 +176,10 @@ Transform:
   m_GameObject: {fileID: 9213235347113522617}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: -0.39, z: 0}
   m_LocalScale: {x: 59.34101, y: 59.341003, z: 59.341003}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5196709027492505613}
   - {fileID: 2397406644669482461}
   m_Father: {fileID: 681975428004546794}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -241,7 +209,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8ec4de5a6840cdf44949fb04effd028c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.00026
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8ec4de5a6840cdf44949fb04effd028c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -278,6 +246,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8ec4de5a6840cdf44949fb04effd028c, type: 3}
       propertyPath: m_Name
       value: Slime
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8ec4de5a6840cdf44949fb04effd028c, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
