@@ -40,6 +40,8 @@ public class Player : NetworkBehaviour
             {
                 Debug.Log($"{player.OwnerClientId} blew up!");
             }
+
+            DieServerRpc();
         }
     }
 
@@ -66,14 +68,9 @@ public class Player : NetworkBehaviour
         BlowUpClientRpc(playerReference);
     }
 
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     void CreateBombServerRpc()
     {
-        if (!IsLocalPlayer)
-        {
-            return;
-        }
-
         var bomb = Instantiate(Resources.Load<GameObject>("Prefabs/Bomb"));
         bomb.transform.position = transform.position;
         var netObj = bomb.GetComponent<NetworkObject>();
@@ -83,6 +80,14 @@ public class Player : NetworkBehaviour
     [ServerRpc(RequireOwnership =false)]
     public void DieServerRpc()
     {
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
+        DieServerClientRPC();
+       
+    }
+
+    [ClientRpc]
+    public void DieServerClientRPC()
+    {
+        Instantiate(Resources.Load<Canvas>("Prefabs/GameOverCanvas"));
     }
 }
