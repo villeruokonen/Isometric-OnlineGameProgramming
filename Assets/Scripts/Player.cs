@@ -69,11 +69,6 @@ public class Player : NetworkBehaviour
     [ServerRpc]
     void CreateBombServerRpc()
     {
-        if (!IsLocalPlayer)
-        {
-            return;
-        }
-
         var bomb = Instantiate(Resources.Load<GameObject>("Prefabs/Bomb"));
         bomb.transform.position = transform.position;
         var netObj = bomb.GetComponent<NetworkObject>();
