@@ -15,9 +15,6 @@ public class NetworkBomb : NetworkBehaviour
 
     public override void OnNetworkSpawn()
     {
-        if (!IsOwner)
-            return;
-
         _bombBodyRenderer = GetComponent<Renderer>();
         StartCoroutine(ExplosionCoroutine());
     }
@@ -64,6 +61,9 @@ public class NetworkBomb : NetworkBehaviour
             lines[i] = lineRoot;
             startAngle += 90;
 
+            if (!IsServer)
+                continue;
+
             if(hit.collider.CompareTag("Player"))
             {
                 Debug.Log("Hit player");
@@ -81,6 +81,9 @@ public class NetworkBomb : NetworkBehaviour
         {
             Destroy(line);
         }
+
+        if(IsServer)
+            NetworkObject.Despawn(true);
 
         yield return null;
     }
